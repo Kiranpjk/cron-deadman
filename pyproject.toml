@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cron-deadman"
+version = "0.1.0"
+description = "Dead man's switch for cron jobs: alert when a job fails or silently stops running"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Jaya Kiran" }]
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+cron-deadman = "cron_deadman.cli:main"
+
+[tool.setuptools]
+packages = ["cron_deadman"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

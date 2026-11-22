@@ -1,0 +1,9 @@
+# Copy to checks.yaml and edit. Durations: 90s, 15m, 1h30m, 1d, 2w.
+webhook: null   # e.g. https://hooks.slack.com/services/... (or pass --webhook)
+checks:
+  - name: nightly-backup   # ping URL: http://<host>:8080/ping/nightly-backup
+    period: 1d             # how often the job runs
+    grace: 1h              # extra time before it counts as missed
+  - name: certbot-renew
+    period: 12h
+    grace: 30m
