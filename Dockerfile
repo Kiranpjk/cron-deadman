@@ -1,10 +1,10 @@
-FROM python:3.13-slim AS build
+FROM python:3.15-slim AS build
 WORKDIR /src
 COPY pyproject.toml README.md ./
 COPY cron_deadman ./cron_deadman
 RUN pip install --no-cache-dir --prefix=/install .
 
-FROM python:3.13-slim
+FROM python:3.15-slim
 COPY --from=build /install /usr/local
 RUN useradd --system --uid 10001 app && mkdir /data && chown app /data
 USER app
